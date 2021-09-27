@@ -25,12 +25,8 @@ body {
   font-size:  2rem;
   border: 1px solid white;
   outline: none;
-  background-color: rgba(255, 255, 255, .75);
+  background-color: rgba(255, 255, 255, .50);
 } 
-
-.calculator-grid > button:hover {
-  background-color: rgba(255, 255, 255, .9);
-}
 
 .span-two {
   grid-column: span 2;
@@ -75,26 +71,37 @@ a:hover {
   padding: 10px;
 }
 
+@media (min-width: 576px) {
+  .calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .8);
+  }
+}
+
 @media (max-width: 576px) {
   .calculator-grid {
     height: 400px;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 50px);
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 80px);
   }
 
   .calculator-grid button {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    user-select: none;
   }
 
-  a {
-    background: yellow;
+  @keyframes clickAnimation {
+    0%   {background-color: rgba(255, 255, 255, .50);}
+    50%  {background-color: rgba(255, 255, 255, .8);}
+    100% {background-color: rgba(255, 255, 255, .50);}
   }
-  
-  .output {
-    background-color: rgb(132, 0, 255) !important;
+
+  .calculator-grid button:hover {
+    animation-name: clickAnimation;
+    animation-duration: 300ms;
   }
 
   .footer {
     position: relative;
+    margin-bottom: 0;
   }
 }
